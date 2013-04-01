@@ -1,6 +1,6 @@
 /*
  *  Bordfunk Internet Radio App
- *  Copyright (C) 2010-2012 Christian Lins <christian@lins.me>
+ *  Copyright (C) 2010-2013 Christian Lins <christian@lins.me>
  *
  *  This Source Code Form is subject to the terms of the Mozilla Public
  *  License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -15,35 +15,37 @@ import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Form;
 import javax.microedition.lcdui.Spacer;
+
 import net.bordfunk.RadioMIDlet;
 
 /**
- *
+ * 
  * @author Christian Lins
  */
 public class HelpForm extends Form implements CommandListener {
 
-	public static final Command BACK = new Command("Zurück", Command.BACK, 0);
+    public static final Command BACK = new Command("Back", Command.BACK, 0);
 
-	private RadioMIDlet midlet;
+    private final RadioMIDlet   midlet;
 
-	public HelpForm(RadioMIDlet midlet) {
-		super("Hilfe");
-		setCommandListener(this);
+    public HelpForm(RadioMIDlet midlet) {
+        super("Help");
+        setCommandListener(this);
 
-		this.midlet = midlet;
+        this.midlet = midlet;
 
-		addCommand(BACK);
+        addCommand(BACK);
 
-		append("Wähle einen Stream und drücke 'Start' um mit dem Streamen zu beginnen.");
-		append(new Spacer(getWidth(), 1));
-		append("Bitte beachte, dass das Streamen von Internetradio hohen Datentraffic verursachen kann. ");
-		append("Eine Datenflat oder WLAN-Verbindung (sofern verfügbar) wird dringend empfohlen.");
-	}
+        append("Choose a stream and press 'Start' to start listening.");
+        append(new Spacer(getWidth(), 1));
+        append("Please note that streaming requires high data traffic.");
+        append(new Spacer(getWidth(), 1));
+        append("Data flat plan or Wifi is highly recommended.");
+    }
 
-	public void commandAction(Command cmd, Displayable disp) {
-		if(cmd.equals(BACK)) {
-			Display.getDisplay(midlet).setCurrent(new StationsList(midlet));
-		}
-	}
+    public void commandAction(Command cmd, Displayable disp) {
+        if (cmd.equals(BACK)) {
+            Display.getDisplay(midlet).setCurrent(new StationsList(midlet));
+        }
+    }
 }
