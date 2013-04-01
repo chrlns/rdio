@@ -27,6 +27,7 @@ import net.bordfunk.RadioPlayerListener;
 import net.bordfunk.Stations;
 
 /**
+ * View of the radio player.
  * 
  * @author Christian Lins
  */
@@ -66,7 +67,6 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
 
     protected void setStatusText(String text) {
         set(2, new StringItem("Status", text));
-        // append(text);
     }
 
     public void playerUpdate(Player player, String event, Object eventData) {
@@ -85,7 +85,7 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
     }
 
     public void exceptionOccurred(Exception ex) {
-        setStatusText(ex.toString());
+        setStatusText("Exception: " + ex.toString());
 
         // An exception means in most cases that the connection was lost or
         // the mimetype of the stream is not supported
@@ -99,6 +99,8 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
     public void statusEvent(String msg) {
         if (msg.equals(PlayerListener.END_OF_MEDIA)) {
             setStatusText("Connection to slow!");
+        } else if (msg.equals(PlayerListener.VOLUME_CHANGED)) {
+            setStatusText("Volume was changed");
         } else {
             setStatusText(msg);
         }

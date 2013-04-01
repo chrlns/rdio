@@ -81,14 +81,16 @@ public class RadioPlayer {
 
             fireStatusEvent("Create Player...");
             this.player = Manager.createPlayer(IN, IN.getContentType());
+            this.player.realize();
+
+            // Make sure radio is audible; this causes an VOLUME_CHANGED event
+            VolumeControl vcon = (VolumeControl) this.player.getControl("VolumeControl");
+            vcon.setMute(false);
+            vcon.setLevel(50);
 
             for (int n = 0; n < listeners.size(); n++) {
                 this.player.addPlayerListener((PlayerListener) listeners.elementAt(n));
             }
-            this.player.realize();
-
-            VolumeControl vcon = (VolumeControl) this.player.getControl("VolumeControl");
-            vcon.setLevel(100);
 
             fireStatusEvent("Starting...");
             this.player.start();
