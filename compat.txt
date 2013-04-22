@@ -1,0 +1,37 @@
+S40 3rd Ed. FP2 (6300):     incompatible, no Wifi/3G
+S40 5th Ed. FP1 (128x160):  incompatible, no Wifi/3G
+S40 5th Ed. FP1 (240x320): 
+    - 2700 classic:   incompatible, no Wifi/3G
+    - 2730 classic:   might work, untested
+    - 3120 classic:   might work, untested
+    - 3208 classic:   incompatible, no Wifi/3G
+    - 3600 slide:     might work, untested
+    - 5130 xpressm:   incompatible, no Wifi/3G
+    - 5220 xpressm:   incompatible, no Wifi/3G
+    - 5310 xpressm:   incompatible, no Wifi/3G
+    - 5610 xpressm:   might work, untested
+    - 6208 classic:   incompatible, no Wifi/3G
+    - 6212 classic:   might work, untested
+    - 6300i:          tested, currently not working
+    - 6301:           might work, untested (WLAN?)
+    - 6500 classic:   might work, untested
+    - 6500 slide:     might work, untested
+    - 6600 fold:      might work, untested
+    - 6600 slide:     might work, untested
+    - 6600i slide:    might work, untested
+    - 7210 supernova: incompatible, no Wifi/3G
+    - 7310 supernova: incompatible, no Wifi/3G
+    - 7610 supernova: incompatible, no Wifi/3G
+    - 7900:           might work, untested
+    - 8800:           incompatible, no Wifi/3G
+S40 5th Ed. FP1 LE:   incompatible, no Wifi/3G
+S40 6th Ed.:          
+    - 2710:           incompatible, no Wifi/3G
+    - 3710 fold:      might work, untested
+    - 3720 classic:   incompatible, no Wifi/3G
+
+S40 Developer Platform 1.1 (320x240): 
+    - Asha 200:       incompatible, no Wifi/3G
+    - Asha 201:       incompatible, no Wifi/3G
+    - Asha 302:       might work, untested
+S40 Developer Platform 2.0: tested, works

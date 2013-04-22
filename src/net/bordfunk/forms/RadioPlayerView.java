@@ -43,8 +43,7 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
     private long                runtime;
 
     public RadioPlayerView(int stationIdx, RadioMIDlet midlet) {
-        super("Station: " + Stations.NAMES[stationIdx]);
-        setCommandListener(this);
+        super(Stations.NAMES[stationIdx]);
 
         this.midlet = midlet;
         append(new StringItem(null, Stations.DESCRIPTIONS[stationIdx]));
@@ -52,12 +51,15 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
         append(new StringItem("Status", "Starting..."));
 
         addCommand(cmdBack);
+        setCommandListener(this);
     }
 
-    public void commandAction(Command c, Displayable d) {
+    public void commandAction(Command cmd, Displayable disp) {
         try {
-            if (c.equals(cmdBack)) {
-                this.player.stopPlayer();
+            if (cmd.equals(cmdBack)) {
+                if (this.player != null) {
+                    this.player.stopPlayer();
+                }
                 Display.getDisplay(midlet).setCurrent(new StationsList(midlet));
             }
         } catch (Exception ex) {

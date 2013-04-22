@@ -15,20 +15,21 @@ package net.bordfunk;
 public class Stations {
 
     public static final String[] DESCRIPTIONS = new String[] {
-            "Das Jugendprogramm des Westdeutschen Rundfunks.", "Deutschlandfunk",
-            "Deutschlandradio Kultur",
+            "Das Jugendprogramm des Westdeutschen Rundfunks.", "BBC World Service English",
+            "Deutschlandfunk", "Deutschlandradio Kultur",
             "DRadio Wissen ist das dritte Vollprogramm des Deutschlandradios.",
             "NDR 2 - Das Beste am Norden"    };
 
-    public static final String[] NAMES        = new String[] { "1LIVE", "Deutschlandfunk",
-            "DRadio Kultur", "DRadio Wissen", "NDR 2" };
+    public static final String[] NAMES        = new String[] { "1LIVE (German)",
+            "BBC World Service (English)", "Deutschlandfunk (German)", "DRadio Kultur (German)",
+            "DRadio Wissen (German)", "NDR 2 (German)" };
 
     public static final String[] HOSTS        = new String[] { "1live.akacast.akamaistream.net",
-            "dradio.ic.llnwd.net", "dradio.ic.llnwd.net", "dradio.ic.llnwd.net",
-            "ndrstream.ic.llnwd.net"         };
+            "bbcwssc.ic.llnwd.net", "dradio.ic.llnwd.net", "dradio.ic.llnwd.net",
+            "dradio.ic.llnwd.net", "ndrstream.ic.llnwd.net" };
 
     public static final String[] URLS         = new String[] {
-            "/7/706/119434/v1/gnl.akacast.akamaistream.net/1live", "/stream/dradio_dlf_s_a",
-            "/stream/dradio_dkultur_s_a", "/stream/dradio_dwissen_s_a",
+            "/7/706/119434/v1/gnl.akacast.akamaistream.net/1live", "/stream/bbcwssc_mp1_ws-eieuk",
+            "/stream/dradio_dlf_s_a", "/stream/dradio_dkultur_s_a", "/stream/dradio_dwissen_s_a",
             "/stream/ndrstream_ndr2_hi_mp3", };
 }

@@ -35,7 +35,7 @@ public class StationsList extends Form implements CommandListener {
                                                       ChoiceGroup.EXCLUSIVE, Stations.NAMES, null);
 
     public StationsList(RadioMIDlet midlet) {
-        super("Internet Radio Stations");
+        super("Radio Stations");
         this.midlet = midlet;
 
         append(stationChoice);
@@ -50,10 +50,10 @@ public class StationsList extends Form implements CommandListener {
 
     public void commandAction(Command cmd, Displayable disp) {
         if (cmd.equals(RadioPlayerView.CMD_START)) {
-            RadioPlayerView playerView = new RadioPlayerView(stationChoice.getSelectedIndex(),
-                    midlet);
+            int selIdx = stationChoice.getSelectedIndex();
+            RadioPlayerView playerView = new RadioPlayerView(selIdx, midlet);
+            RadioPlayer player = new RadioPlayer(selIdx);
             Display.getDisplay(midlet).setCurrent(playerView);
-            RadioPlayer player = new RadioPlayer(stationChoice.getSelectedIndex());
             playerView.setPlayer(player);
             player.startPlayer();
         } else if (cmd.equals(RadioPlayerView.CMD_EXIT)) {

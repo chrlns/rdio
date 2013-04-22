@@ -77,6 +77,7 @@ public class RadioPlayer {
                     this.player.removePlayerListener((PlayerListener) listeners.elementAt(n));
                 }
                 this.player.close();
+                this.player = null;
             }
 
             fireStatusEvent("Create Player...");

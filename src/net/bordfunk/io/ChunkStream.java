@@ -30,17 +30,35 @@ import net.bordfunk.RadioPlayerListener;
  */
 public class ChunkStream extends InputStream {
 
-    public static final int      CHUNKSIZE     = 196608;                          // 196k
+    public static final int      CHUNKSIZE_MIN = 16384;       // 16k
 
     private ByteArrayInputStream buf           = null;
-    private ChunkOutputBuffer    out_front     = new ChunkOutputBuffer(CHUNKSIZE);
-    private ChunkOutputBuffer    out_back      = new ChunkOutputBuffer(CHUNKSIZE);
+    private int                  chunksize;
+    private ChunkOutputBuffer    out_front;
+    private ChunkOutputBuffer    out_back;
     private InputStream          in            = null;
     private ChunkWorker          currentWorker = null;
     private HttpConnection       conn          = null;
     private String               contentType   = "audio/mpeg";
 
     public ChunkStream() {
+        // Create front and back buffers
+        System.out.println("Free memory: " + Runtime.getRuntime().freeMemory() / 1024 + "k");
+        chunksize = (int) (Runtime.getRuntime().freeMemory() / 8);
+        chunksize -= chunksize % 8;
+        while (chunksize >= CHUNKSIZE_MIN) {
+            try {
+                out_front = new ChunkOutputBuffer(chunksize);
+                out_back = new ChunkOutputBuffer(chunksize);
+            } catch (OutOfMemoryError err) {
+                System.out.println("Chunksize " + (chunksize / 1024) + "k is too big");
+                chunksize = chunksize - CHUNKSIZE_MIN;
+                out_front = null;
+                out_back = null;
+                System.gc();
+            }
+            break;
+        }
     }
 
     public String getContentType() {
@@ -50,11 +68,6 @@ public class ChunkStream extends InputStream {
     public void setURL(String host, String url) throws IOException {
         closeStream();
 
-        /*
-         * this.conn = (SocketConnection) Connector.open("socket://" + host +
-         * ":80", Connector.READ, true); this.in = new HttpInputStream(host,
-         * url, conn.openInputStream(), conn.openOutputStream());
-         */
         conn = (HttpConnection) Connector.open("http://" + host + url, Connector.READ, true);
         conn.setRequestMethod(HttpConnection.GET);
         if (conn.getResponseCode() == HttpConnection.HTTP_OK) {
@@ -100,7 +113,7 @@ public class ChunkStream extends InputStream {
 
     public void prebuffer(Vector listeners) {
         // Fill front buffer again
-        currentWorker = new ChunkWorker(this.out_front, in, CHUNKSIZE);
+        currentWorker = new ChunkWorker(this.out_front, in, chunksize);
         for (int n = 0; n < listeners.size(); n++) {
             currentWorker.addListener((RadioPlayerListener) listeners.elementAt(n));
         }
@@ -121,7 +134,7 @@ public class ChunkStream extends InputStream {
 
         // Fill front buffer again
         this.out_front.reset();
-        currentWorker = new ChunkWorker(this.out_front, in, CHUNKSIZE);
+        currentWorker = new ChunkWorker(this.out_front, in, chunksize);
         currentWorker.start();
     }
 
