@@ -3,3 +3,4 @@ http://dradio.ic.llnwd.net/stream/dradio_dlf_s_a
 http://dradio.ic.llnwd.net/stream/dradio_dkultur_s_a
 http://dradio.ic.llnwd.net/stream/dradio_dwissen_s_a
 http://ndrstream.ic.llnwd.net/stream/ndrstream_ndr2_hi_mp3
+http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-eieuk
