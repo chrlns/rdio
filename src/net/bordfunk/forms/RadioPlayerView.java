@@ -18,6 +18,7 @@ import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Form;
 import javax.microedition.lcdui.Spacer;
 import javax.microedition.lcdui.StringItem;
+import javax.microedition.media.MediaException;
 import javax.microedition.media.Player;
 import javax.microedition.media.PlayerListener;
 
@@ -72,14 +73,14 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
     }
 
     public void playerUpdate(Player player, String event, Object eventData) {
-        setStatusText(event);
-
         try {
             if (event.equals(PlayerListener.STARTED)) {
                 setStatusText("Started.");
                 runtime = System.currentTimeMillis();
             } else if (event.equals(PlayerListener.END_OF_MEDIA)) {
                 this.player.restartPlayer();
+            } else if (event.equals(PlayerListener.VOLUME_CHANGED)) {
+                // Volume has been changed
             }
         } catch (Exception ex) {
             exceptionOccurred(ex);
@@ -92,6 +93,12 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
         // An exception means in most cases that the connection was lost or
         // the mimetype of the stream is not supported
         // this.player.restartPlayer();
+        if (ex instanceof MediaException) {
+            // Not very robust catch here
+            if (ex.getMessage().equals("Sounds not allowed.")) {
+                setStatusText("No sound. Silent profile active?");
+            }
+        }
     }
 
     public void bufferStatus(int level, int max) {

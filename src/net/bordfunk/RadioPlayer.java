@@ -66,7 +66,7 @@ public class RadioPlayer {
         new Thread(runner).start();
     }
 
-    public void restartPlayer() {
+    public synchronized void restartPlayer() {
         try {
             fireStatusEvent("Wait...");
             IN.nextChunk();
