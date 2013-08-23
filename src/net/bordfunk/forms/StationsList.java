@@ -1,5 +1,5 @@
 /*
- *  Bordfunk Internet Radio App
+ *  rdio Internet Radio App
  *  Copyright (C) 2010-2013 Christian Lins <christian@lins.me>
  *
  *  This Source Code Form is subject to the terms of the Mozilla Public
@@ -21,18 +21,20 @@ import net.bordfunk.RadioPlayer;
 import net.bordfunk.Stations;
 
 /**
+ * List that shows stations.
  * 
  * @author Christian Lins
  */
 public class StationsList extends Form implements CommandListener {
 
-    public static final Command ABOUT         = new Command("About", "About Bordfunk",
+    public static final Command ABOUT         = new Command("About", "About rdio",
                                                       Command.HELP, 0);
     public static final Command HELP          = new Command("Help", Command.HELP, 1);
 
     private final RadioMIDlet   midlet;
     private final ChoiceGroup   stationChoice = new ChoiceGroup("Choose a station:",
-                                                      ChoiceGroup.EXCLUSIVE, Stations.NAMES, null);
+                                                      ChoiceGroup.EXCLUSIVE, Stations.NAMES,
+                                                      null);
 
     public StationsList(RadioMIDlet midlet) {
         super("Radio Stations");
