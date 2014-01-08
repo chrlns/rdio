@@ -1,5 +1,5 @@
 /*
- *  Bordfunk Internet Radio App
+ *  rdio Internet Radio App
  *  Copyright (C) 2010-2013 Christian Lins <christian@lins.me>
  *
  *  This Source Code Form is subject to the terms of the Mozilla Public
@@ -8,8 +8,6 @@
  */
 
 package net.bordfunk.forms;
-
-import java.util.Timer;
 
 import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.CommandListener;
@@ -40,8 +38,6 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
     private final Command       cmdBack   = new Command("Back", Command.BACK, 0);
     private RadioPlayer         player    = null;
     private final RadioMIDlet   midlet;
-    private final Timer         timer     = new Timer();
-    private long                runtime;
 
     public RadioPlayerView(int stationIdx, RadioMIDlet midlet) {
         super(Stations.NAMES[stationIdx]);
@@ -76,7 +72,6 @@ public class RadioPlayerView extends Form implements RadioPlayerListener, Comman
         try {
             if (event.equals(PlayerListener.STARTED)) {
                 setStatusText("Started.");
-                runtime = System.currentTimeMillis();
             } else if (event.equals(PlayerListener.END_OF_MEDIA)) {
                 this.player.restartPlayer();
             } else if (event.equals(PlayerListener.VOLUME_CHANGED)) {

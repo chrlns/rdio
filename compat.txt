@@ -12,7 +12,7 @@ S40 5th Ed. FP1 (240x320):
     - 5610 xpressm:   might work, untested
     - 6208 classic:   incompatible, no Wifi/3G
     - 6212 classic:   might work, untested
-    - 6300i:          tested, currently not working
+    - 6300i:          tested, working
     - 6301:           might work, untested (WLAN?)
     - 6500 classic:   might work, untested
     - 6500 slide:     might work, untested

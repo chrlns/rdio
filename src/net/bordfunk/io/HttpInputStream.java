@@ -1,5 +1,5 @@
 /*
- *  Bordfunk Internet Radio App
+ *  rdio Internet Radio App
  *  Copyright (C) 2010-2013 Christian Lins <christian@lins.me>
  *
  *  This Source Code Form is subject to the terms of the Mozilla Public
@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * A simple HTTP input stream.
  * 
  * @author Christian Lins
  */

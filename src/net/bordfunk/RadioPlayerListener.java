@@ -1,5 +1,5 @@
 /*
- *  Bordfunk Internet Radio App
+ *  rdio Internet Radio App
  *  Copyright (C) 2010-2013 Christian Lins <christian@lins.me>
  *
  *  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,6 +12,7 @@ package net.bordfunk;
 import javax.microedition.media.PlayerListener;
 
 /**
+ * Enhanced PlayerListener interface.
  * 
  * @author Christian Lins
  */
